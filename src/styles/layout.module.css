@@ -1,0 +1,50 @@
+.dGridRow {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+}
+
+.col1 { grid-column: span 1; }
+.col2 { grid-column: span 2; }
+.col3 { grid-column: span 3; }
+.col4 { grid-column: span 4; }
+.col5 { grid-column: span 5; }
+.col6 { grid-column: span 6; }
+.col7 { grid-column: span 7; }
+.col8 { grid-column: span 8; }
+.col9 { grid-column: span 9; }
+.col10 { grid-column: span 10; }
+.col11 { grid-column: span 11; }
+.col12 { grid-column: span 12; }
+
+/* >= 768px */
+@media screen and (min-width: 768px) {
+    .colMd1 { grid-column: span 1; }
+    .colMd2 { grid-column: span 2; }
+    .colMd3 { grid-column: span 3; }
+    .colMd4 { grid-column: span 4; }
+    .colMd5 { grid-column: span 5; }
+    .colMd6 { grid-column: span 6; }
+    .colMd7 { grid-column: span 7; }
+    .colMd8 { grid-column: span 8; }
+    .colMd9 { grid-column: span 9; }
+    .colMd10 { grid-column: span 10; }
+    .colMd11 { grid-column: span 11; }
+    .colMd12 { grid-column: span 12; }
+}
+
+/* >= 1280px */
+@media screen and (min-width: 1280px) {
+    .colLg1 { grid-column: span 1; }
+    .colLg2 { grid-column: span 2; }
+    .colLg3 { grid-column: span 3; }
+    .colLg4 { grid-column: span 4; }
+    .colLg5 { grid-column: span 5; }
+    .colLg6 { grid-column: span 6; }
+    .colLg7 { grid-column: span 7; }
+    .colLg8 { grid-column: span 8; }
+    .colLg9 { grid-column: span 9; }
+    .colLg10 { grid-column: span 10; }
+    .colLg11 { grid-column: span 11; }
+    .colLg12 { grid-column: span 12; }
+}
