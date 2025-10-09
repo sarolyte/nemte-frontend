@@ -1,0 +1,24 @@
+.header {
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    padding: 27px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 5px rgb(201, 201, 201);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    z-index: 998;
+}
+
+.logo {
+    width: 120px;
+}
+
+@media screen and (min-width: 768px) {
+    .header{
+        padding: 27px 60px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+}
