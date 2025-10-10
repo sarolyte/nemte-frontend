@@ -14,13 +14,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* a {
-
-  text-decoration: inherit;
+a {
+  text-decoration: none;
 }
-a:hover {
-  color: #444dff;
-} */
+
 
 /* body {
   margin: 0;
