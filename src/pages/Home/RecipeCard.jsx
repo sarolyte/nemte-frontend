@@ -6,7 +6,7 @@ export default function RecipeCard({ img, title, description }) {
 
   return (
     <div className={styles.cardWrapper}>
-      <div className={styles.image}>
+      <div className={styles.imageBlock}>
         <img src={img} alt="" />
       </div>
       <h3> {title} </h3>

@@ -1,5 +1,7 @@
 import RecipeCard from "./RecipeCard.jsx";
 import useFetchData from "../../hooks/useFetchData.js";
+import styles from './RecipeSection.module.css';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 
 export default function RecipeSection() {
   const { data } = useFetchData();
@@ -11,9 +13,9 @@ export default function RecipeSection() {
   const limitedData = sortedData.slice(0, 9);
 
   return (
-    <div>
-      <h2>Recipes</h2>
-      <div id="recipes">
+    <div className={styles.sectionWrapper} >
+      <h2>Newest recipes</h2>
+      <div  className={styles.recipes} id="recipes">
         {limitedData.map((recipe) => (
           <RecipeCard
             key={recipe._id}
