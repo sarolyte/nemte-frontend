@@ -1,0 +1,14 @@
+.sectionWrapper {
+    height: 250px;
+    background-color: #F5EBDD;
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 24pt;
+    line-height: 1.2;
+}
