@@ -6,3 +6,8 @@
 .socialMediaWraper a {
     color: rgb(255, 255, 255);
 }
+
+.icon svg {
+  width: 25px;
+  height: 25px;
+}
