@@ -1,4 +1,4 @@
-import HeroSection from "./HeroSection.jsx";
+import HeroSection from "./HeroSection/HeroSection.jsx";
 import pumpkinSoup from '../../assets/pumpkin_soup.png'
 import RecipeSection from "./RecipeSection/RecipeSection.jsx";
 import PhilosophySection from "./PhilosophySection/PhilosophySection.jsx";

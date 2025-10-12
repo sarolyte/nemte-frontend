@@ -1,0 +1,8 @@
+.socialMediaWraper {
+    display: flex;
+    gap: 20px;
+}
+
+.socialMediaWraper a {
+    color: rgb(255, 255, 255);
+}
