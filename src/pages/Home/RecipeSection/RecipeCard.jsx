@@ -9,8 +9,14 @@ export default function RecipeCard({ img, title, description }) {
       <div className={styles.imageBlock}>
         <img src={img} alt="" />
       </div>
-      <h3> {title} </h3>
-      <p> {shortDescription} </p>
+
+      <div className={styles.cardInfo} >
+        <h3> {title} </h3>
+        <div className={styles.description} >
+          <p> {shortDescription} </p>
+        </div>
+      </div>
+      
     </div>
   );
 }

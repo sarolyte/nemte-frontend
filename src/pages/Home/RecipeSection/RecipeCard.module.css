@@ -1,19 +1,22 @@
 .cardWrapper {
+    display: grid;
+    grid-template-rows: 180px 48px 1fr 80px;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    max-width: 320px;
+    width: 320px;
+    height: 380px;
     margin: 10px auto;
     padding: 15px;
-    display: flex;
-    flex-direction: column;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .imageBlock {
+    grid-row: 1;
     width: 100%;
-    height: 180px;
+    height: 100%;
     overflow: hidden;
     border-radius: 8px;
 }
@@ -23,15 +26,31 @@
     height: 100%;
     object-fit: cover;
     display: block;
+
+}
+.cardInfo {
+    grid-row: 2 / 2; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 10px;
 }
 
-h3 {
+.cardInfo h3 {
     font-size: 20px;
     margin: 0;
     color: #151515;
+    min-height: 60px;
 }
 
-p {
+.description {
+    grid-row: 4;
+    height: 80px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.description p {
     font-size: 14px;
     color: #151515;
     line-height: 1.2;

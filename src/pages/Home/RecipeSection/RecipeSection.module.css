@@ -1,0 +1,25 @@
+.sectionWrapper {
+    background-color: #f5ebdd2a;
+    padding: 20px 0;
+}
+
+.sectionWrapper h2 {
+    margin: 0;
+    padding: 0px 40px 15px;
+    font-size: 24pt;
+
+}
+
+.containerWrapper {
+    width: 350px;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
+}

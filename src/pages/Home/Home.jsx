@@ -1,6 +1,6 @@
 import HeroSection from "./HeroSection.jsx";
 import pumpkinSoup from '../../assets/pumpkin_soup.png'
-import RecipeSection from "./RecipeSection.jsx";
+import RecipeSection from "./RecipeSection/RecipeSection.jsx";
 
 
 export function Home() {
