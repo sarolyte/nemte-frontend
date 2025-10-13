@@ -1,0 +1,37 @@
+.imageGallery {
+  width: 100%;
+  max-width: 700px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.thumbnail {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.fullImage {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
