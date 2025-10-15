@@ -1,5 +1,6 @@
 import GridGallery from "../../components/GridGallery/GridGallery";
 import TextBlock from "../../components/TextBlock/TextBlock.jsx";
+
 import styles from "./About.module.css";
 
 //images for gallery
@@ -12,6 +13,7 @@ import VeganCurry from "../../assets/Vegan_Sweet_Potato_Curry.png";
 import FreshSalad from "../../assets/Fresh_Vegetable_Salad.png";
 import LazyCake from "../../assets/Lazy_Cake_with_Coconut_Cream.png";
 import BananaSmoothie from "../../assets/Banana_Smoothie.png";
+
 
 export default function About() {
   return (
