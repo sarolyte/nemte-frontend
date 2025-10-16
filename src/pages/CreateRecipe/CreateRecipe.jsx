@@ -1,8 +1,41 @@
 import useNewRecipe from "../../hooks/useNewRecipe.js";
 import styles from "./CreateRecipe.module.css";
+import Select from "react-select";
 
 export default function CreateRecipe() {
   const recipe = useNewRecipe();
+
+  const cuisineOptions = [
+    { value: "lithuanian", label: "Lithuanian" },
+    { value: "italian", label: "Italian" },
+    { value: "japanese", label: "Japanese" },
+    { value: "mexican", label: "Mexican" },
+    { value: "indian", label: "Indian" },
+    { value: "mediterranean", label: "Mediterranean" },
+    { value: "french", label: "French" },
+    { value: "american", label: "American" },
+    { value: "korean", label: "Korean" },
+    { value: "other", label: "Other" },
+  ];
+
+  const dietOptions = [
+    { value: "vegan", label: "Vegan" },
+    { value: "vegetarian", label: "Vegetarian" },
+    { value: "pescatarian", label: "Pescatarian" },
+    { value: "keto", label: "Keto" },
+    { value: "meat", label: "Meat" },
+    { value: "lactose free", label: "Lactose Free" },
+    { value: "gluten free", label: "Gluten Free" },
+  ];
+  const courseOptions = [
+    { value: "appetizer", label: "Appetizer" },
+    { value: "side_dish", label: "Side Dish" },
+    { value: "dessert", label: "Dessert" },
+    { value: "snack", label: "Snack" },
+    { value: "breakfast", label: "Breakfast" },
+    { value: "lunch", label: "Lunch" },
+    { value: "dinner", label: "Dinner" },
+  ];
 
   const convertToBase64 = (e) => {
     console.log(e);
@@ -239,60 +272,46 @@ export default function CreateRecipe() {
 
         <div className={styles.inputField}>
           <label htmlFor="courseType">Course Type</label>
-          <select
+          <Select
+            isMulti
             id="courseType"
-            value={recipe.courseType}
-            onChange={(e) => recipe.setCourseType(e.target.value)}
-          >
-            <option value="">Select course type</option>
-            <option value="appetizer">Appetizer</option>
-            <option value="main course">Main Course</option>
-            <option value="side dish">Side Dish</option>
-            <option value="dessert">Dessert</option>
-            <option value="snack">Snack</option>
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-          </select>
+            options={courseOptions}
+            value={courseOptions.filter((o) =>
+              recipe.courseType.includes(o.value)
+            )}
+            onChange={(selected) =>
+              recipe.setCourseType(selected.map((o) => o.value))
+            }
+          ></Select>
         </div>
 
         <div className={styles.inputField}>
           <label htmlFor="dietType">Diet Type</label>
-          <select
+          <Select
+            isMulti
             id="dietType"
-            value={recipe.dietType}
-            onChange={(e) => recipe.setDietType(e.target.value)}
-          >
-            <option value="">Select diet type</option>
-            <option value="vegan">Vegan</option>
-            <option value="vegetarian">Vegetarian</option>
-            <option value="pescatarian">Pescatarian</option>
-            <option value="keto">Keto</option>
-            <option value="meat">Meat</option>
-            <option value="lactose free">Lactose Free</option>
-            <option value="gluten free">Gluten Free</option>
-          </select>
+            options={dietOptions}
+            value={dietOptions.filter((o) => recipe.dietType.includes(o.value))}
+            onChange={(selected) =>
+              recipe.setDietType(selected.map((o) => o.value))
+            }
+            menuPosition="fixed"
+            menuPlacement="auto"
+          ></Select>
         </div>
 
         <div className={styles.inputField}>
           <label htmlFor="cuisineType">Cuisine Type</label>
-          <select
+          <Select
             id="cuisineType"
-            value={recipe.cuisineType}
-            onChange={(e) => recipe.setCuisineType(e.target.value)}
-          >
-            <option value="">Select cuisine type</option>
-            <option value="lithuanian">Lithuanian</option>
-            <option value="italian">Italian</option>
-            <option value="japanese">Japanese</option>
-            <option value="mexican">Mexican</option>
-            <option value="indian">Indian</option>
-            <option value="mediterranean">Mediterranean</option>
-            <option value="french">French</option>
-            <option value="american">American</option>
-            <option value="korean">Korean</option>
-            <option value="other">Other</option>
-          </select>
+            options={cuisineOptions}
+            value={cuisineOptions.find((o) => o.value === recipe.cuisineType)}
+            onChange={(selected) =>
+              recipe.setCuisineType(selected?.value || "")
+            }
+            menuPosition="fixed"
+            menuPlacement="auto"
+          ></Select>
         </div>
 
         <div className={styles.imgUploadBlock}>
