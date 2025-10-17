@@ -9,6 +9,7 @@ import About from './pages/About/About.jsx';
 import CreateRecipe from './pages/CreateRecipe/CreateRecipe.jsx';
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails.jsx';
 import EditRecipe from './pages/EditRecipe/EditRecipe.jsx';
+import AllRecipes from './pages/AllRecipes/AllRecipes.jsx';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/add-recipe" element={<CreateRecipe />}/>
         <Route path='/recipe/:id' element={<RecipeDetails/>} /> 
         <Route path="/edit/:id" element={<EditRecipe />} />
+        <Route path="/all-recipes" element={<AllRecipes />} />
       </Routes>
       <Footer shortTxt='© 2025 Nemte. All right reserved' />
     </>

@@ -26,7 +26,7 @@ export default function MobileNavigation() {
 
             {isOpen && (
                 <nav className={`${styles.menuBox} ${isOpen ? styles.menuBoxOpen : ''}`} >
-                    <NavLink to='/recipes' className={styles.menuItem} onClick={() => setIsOpen(false)}> Explore </NavLink>
+                    <NavLink to='/all-recipes' className={styles.menuItem} onClick={() => setIsOpen(false)}> Explore </NavLink>
                     <NavLink to='/add-recipe' className={styles.menuItem} onClick={() => setIsOpen(false)}> Add a recipe </NavLink>
                     <NavLink to='/about' className={styles.menuItem} onClick={() => setIsOpen(false)}> About </NavLink>
                 </nav>

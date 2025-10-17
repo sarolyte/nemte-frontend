@@ -6,7 +6,7 @@ export default function Navigation() {
         <nav>
             <ul>
                 <li>
-                    <NavLink to='/recipes' className={({isActive}) => isActive ? styles.active : ''} > Explore </NavLink>
+                    <NavLink to='/all-recipes' className={({isActive}) => isActive ? styles.active : ''} > Explore </NavLink>
                 </li>
                 <li>
                     <NavLink to='/add-recipe' className={({isActive}) => isActive ? styles.active : ''} > Add a recipe </NavLink>
