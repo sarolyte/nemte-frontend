@@ -1,11 +1,26 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetchDataById from "../../hooks/useFetchDataById.js";
 import styles from "./RecipeDetails.module.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import useDeleteRecipe from "../../hooks/useDeleteRecipe.js";
+import Modal from "../../components/Modal/Modal.jsx";
 
 export default function RecipeDetails() {
   const { id } = useParams();
   const { data, loading, error } = useFetchDataById(id);
+  const navigate = useNavigate();
+  const { deleteRecipe } = useDeleteRecipe();
+
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleDelete = async () => {
+    const success = await deleteRecipe(id);
+    if (success) navigate("/");
+  };
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -34,7 +49,7 @@ export default function RecipeDetails() {
           <button>Edit</button>
         </Link>
 
-        <button>Delete</button>
+        <button onClick={openModal}>Delete</button>
       </div>
 
       <div>
@@ -95,6 +110,17 @@ export default function RecipeDetails() {
           ))}
         </ol>
       </div>
+      <Modal
+        isOpen={modalOpen}
+        message="Are you sure you want to delete this recipe?"
+        btnTxt="Yes"
+        secondBtnTxt="No"
+        onClose={closeModal}
+        onConfirm={() => {
+          closeModal();
+          handleDelete();
+        }}
+      />
     </div>
   );
 }
