@@ -1,4 +1,5 @@
-import RecipeCard from "./RecipeCard.jsx";
+
+import RecipeCard from "../../../components/RecipeCard/RecipeCard.jsx";
 import useFetchData from "../../../hooks/useFetchData.js";
 import styles from './RecipeSection.module.css';
 import { useRef, useState } from "react";
