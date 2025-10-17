@@ -7,6 +7,7 @@ import { Home } from './pages/Home/Home.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import About from './pages/About/About.jsx';
 import CreateRecipe from './pages/CreateRecipe/CreateRecipe.jsx';
+import RecipeDetails from './pages/RecipeDetails/RecipeDetails.jsx';
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/about" element={<About />}/>
         <Route path="/add-recipe" element={<CreateRecipe />}/>
+        <Route path='/recipe/:id' element={<RecipeDetails/>} /> 
       </Routes>
       <Footer shortTxt='© 2025 Nemte. All right reserved' />
     </>

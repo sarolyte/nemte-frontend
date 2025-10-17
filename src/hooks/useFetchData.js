@@ -19,7 +19,7 @@ export default function useFetchData(
         actions.setError(null)
         })
       .catch((error) => {
-        console.error('Fetch errror:', error);
+        console.error('Fetch error:', error);
       })
       .finally(() =>
         setTimeout(() => {

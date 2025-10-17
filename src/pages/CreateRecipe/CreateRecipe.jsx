@@ -245,17 +245,39 @@ export default function CreateRecipe() {
         <div className={styles.inputField}>
           <label>Steps</label>
           {recipe.steps.map((step, i) => (
-            <textarea
-              key={i}
-              placeholder={`Step ${i + 1}`}
-              value={step}
-              onChange={(e) => {
-                const updated = [...recipe.steps];
-                updated[i] = e.target.value;
-                recipe.setSteps(updated);
-              }}
-            />
+            <div key={i} className={styles.stepBlock}>
+              <textarea
+                placeholder={`Step ${i + 1}`}
+                value={step}
+                onChange={(e) => {
+                  const updated = [...recipe.steps];
+                  updated[i] = e.target.value;
+                  recipe.setSteps(updated);
+                }}
+              />
+              {recipe.steps.length > 1 && (
+                <button
+                  type="button"
+                  className={styles.removeBtn}
+                  onClick={() => {
+                    const updated = recipe.steps.filter(
+                      (step, index) => index !== i
+                    );
+                    recipe.setSteps(updated);
+                  }}
+                >
+                  Remove
+                </button>
+              )}
+            </div>
           ))}
+          <button
+            type="button"
+            className={styles.addBtn}
+            onClick={() => recipe.setSteps([...recipe.steps, ""])}
+          >
+            + Add Step
+          </button>
         </div>
 
         <div className={styles.inputField}>

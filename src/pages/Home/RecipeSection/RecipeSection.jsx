@@ -36,6 +36,7 @@ export default function RecipeSection() {
           {limitedData.map((recipe) => (
             <RecipeCard
               key={recipe._id}
+              id={recipe._id}
               title={recipe.name}
               img={recipe.image}
               description={recipe.description}
