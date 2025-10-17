@@ -12,14 +12,28 @@ export default function useNewRecipe() {
   const [ingredients, setIngredients] = useState([{ name: "", quantity: "" }]);
   const [steps, setSteps] = useState([""]);
   const [portions, setPortions] = useState("1");
-  const [courseType, setCourseType] = useState("");
-  const [dietType, setDietType] = useState("");
+  const [courseType, setCourseType] = useState([]);
+  const [dietType, setDietType] = useState([]);
   const [cuisineType, setCuisineType] = useState("");
 
   const formatDuration = ({ hours, minutes }) => {
     const h = Number(hours) || 0;
     const m = Number(minutes) || 0;
     return `${h}h ${m}m`;
+  };
+
+  const resetForm = () => {
+    setName("");
+    setImage("");
+    setDescription("");
+    setCookingDuration({ hours: "", minutes: "" });
+    setCleaningTime({ hours: "", minutes: "" });
+    setIngredients([{ name: "", quantity: "" }]);
+    setSteps([""]);
+    setPortions("1");
+    setCourseType([]);
+    setDietType([]);
+    setCuisineType("");
   };
 
   const handleSubmit = () => {
@@ -51,10 +65,12 @@ export default function useNewRecipe() {
       }),
     })
       .then((response) => {
+        if (!response.ok) throw new Error("Failed to submit");
         return response.json();
       })
       .then((result) => {
         console.log(result);
+        resetForm();
       })
       .catch((error) => console.error('Submit error:', error));
   };
@@ -83,5 +99,6 @@ export default function useNewRecipe() {
     cuisineType,
     setCuisineType,
     handleSubmit,
+    resetForm,
   };
 }

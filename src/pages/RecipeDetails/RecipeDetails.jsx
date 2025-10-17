@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetchDataById from "../../hooks/useFetchDataById.js";
 import styles from "./RecipeDetails.module.css";
+import { Link } from "react-router-dom";
 
 export default function RecipeDetails() {
   const { id } = useParams();
@@ -8,8 +9,7 @@ export default function RecipeDetails() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
-//   if (!data || Object.keys(data).length === 0) return <p>No recipe found.</p>;
+  if (!data || Object.keys(data).length === 0) return <p>No recipe found.</p>;
 
   const createdDate = data.createdAt
     ? new Intl.DateTimeFormat("en-US", {
@@ -30,26 +30,34 @@ export default function RecipeDetails() {
   return (
     <div>
       <div>
+        <Link to={`/edit/${id}`}>
+          <button>Edit</button>
+        </Link>
+
+        <button>Delete</button>
+      </div>
+
+      <div>
         <p>Created: {createdDate}</p>
         {data.updatedAt && <p>Updated: {updatedDate}</p>}
         <img src={data.image} alt={data.name} style={{ width: "400px" }} />
 
-        <div className={styles.tags} >
-            {data.courseType && data.courseType.length > 0 && (
+        <div className={styles.tags}>
+          {data.courseType && data.courseType.length > 0 && (
             <p>
-                <strong>Course Type:</strong> {data.courseType}
+              <strong>Course Type:</strong> {data.courseType}
             </p>
-            )}
-            {data.dietType && data.dietType.length > 0 && (
+          )}
+          {data.dietType && data.dietType.length > 0 && (
             <p>
-                <strong>Diet Type:</strong> {data.dietType}
+              <strong>Diet Type:</strong> {data.dietType}
             </p>
-            )}
-            {data.cuisineType && data.cuisineType.length > 0 && (
+          )}
+          {data.cuisineType && data.cuisineType.length > 0 && (
             <p>
-                <strong>Cuisine Type:</strong> {data.cuisineType}
+              <strong>Cuisine Type:</strong> {data.cuisineType}
             </p>
-            )}
+          )}
         </div>
 
         <h1>{data.name}</h1>
@@ -79,16 +87,14 @@ export default function RecipeDetails() {
         </ul>
       </div>
 
-        <div>
-            <h2>Steps</h2>
-            <ol>
-                {data.steps.map((step, index) => (
-                    <li key={index}>{step}</li>
-                ))}
-            </ol>
-        </div>
-
-
+      <div>
+        <h2>Steps</h2>
+        <ol>
+          {data.steps.map((step, index) => (
+            <li key={index}>{step}</li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 }

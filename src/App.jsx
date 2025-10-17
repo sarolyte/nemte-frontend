@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './App.css'
 import Header from './components/Header/Header.jsx'
 import "normalize.css";
@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer.jsx';
 import About from './pages/About/About.jsx';
 import CreateRecipe from './pages/CreateRecipe/CreateRecipe.jsx';
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails.jsx';
+import EditRecipe from './pages/EditRecipe/EditRecipe.jsx';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/about" element={<About />}/>
         <Route path="/add-recipe" element={<CreateRecipe />}/>
         <Route path='/recipe/:id' element={<RecipeDetails/>} /> 
+        <Route path="/edit/:id" element={<EditRecipe />} />
       </Routes>
       <Footer shortTxt='© 2025 Nemte. All right reserved' />
     </>
