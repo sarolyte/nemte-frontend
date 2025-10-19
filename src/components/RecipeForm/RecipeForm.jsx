@@ -11,6 +11,7 @@ export default function RecipeForm({
   dietOptions,
   courseOptions,
   fileInputRef,
+  errors = {},
 }) {
   return (
     <>
@@ -25,6 +26,7 @@ export default function RecipeForm({
             value={recipe.name}
             onChange={(e) => recipe.setName(e.target.value)}
           />
+          {errors.name && <p className={styles.error}>{errors.name}</p>}
         </div>
 
         <div className={styles.inputField}>
@@ -35,6 +37,9 @@ export default function RecipeForm({
             value={recipe.description}
             onChange={(e) => recipe.setDescription(e.target.value)}
           />
+          {errors.description && (
+            <p className={styles.error}>{errors.description}</p>
+          )}
         </div>
 
         <fieldset className={styles.inputField}>
@@ -70,6 +75,9 @@ export default function RecipeForm({
               }
             />
           </div>
+          {errors.cookingDuration && (
+            <p className={styles.error}>{errors.cookingDuration}</p>
+          )}
         </fieldset>
 
         <fieldset className={styles.inputField}>
@@ -105,6 +113,9 @@ export default function RecipeForm({
               }
             />
           </div>
+          {errors.cleaningTime && (
+            <p className={styles.error}>{errors.cleaningTime}</p>
+          )}
         </fieldset>
 
         <fieldset>
@@ -147,6 +158,10 @@ export default function RecipeForm({
               )}
             </div>
           ))}
+          {errors.ingredients && (
+            <p className={styles.error}>{errors.ingredients}</p>
+          )}
+
           <button
             type="button"
             className={styles.addBtn}
@@ -190,6 +205,7 @@ export default function RecipeForm({
               )}
             </div>
           ))}
+          {errors.steps && <p className={styles.error}>{errors.steps}</p>}
           <button
             type="button"
             className={styles.addBtn}
@@ -224,6 +240,9 @@ export default function RecipeForm({
               recipe.setCourseType(selected.map((o) => o.value))
             }
           />
+          {errors.courseType && (
+            <p className={styles.error}>{errors.courseType}</p>
+          )}
         </div>
 
         <div className={styles.inputField}>
@@ -239,6 +258,7 @@ export default function RecipeForm({
             menuPosition="fixed"
             menuPlacement="auto"
           />
+          {errors.dietType && <p className={styles.error}>{errors.dietType}</p>}
         </div>
 
         <div className={styles.inputField}>
@@ -253,6 +273,9 @@ export default function RecipeForm({
             menuPosition="fixed"
             menuPlacement="auto"
           />
+          {errors.cuisineType && (
+            <p className={styles.error}>{errors.cuisineType}</p>
+          )}
         </div>
 
         <div className={styles.imgUploadBlock}>

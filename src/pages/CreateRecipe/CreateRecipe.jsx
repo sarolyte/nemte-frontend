@@ -1,4 +1,4 @@
-import styles from './CreateRecipe.module.css'
+import styles from "./CreateRecipe.module.css";
 import Footer from "../../components/Footer/Footer.jsx";
 import RecipeForm from "../../components/RecipeForm/RecipeForm.jsx";
 import {
@@ -7,11 +7,12 @@ import {
   dietOptions,
 } from "../../components/RecipeForm/RecipeFormOptions.jsx";
 import useNewRecipe from "../../hooks/useNewRecipe.js";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 
 export default function CreateRecipe() {
   const recipe = useNewRecipe();
   const fileInputRef = useRef(null);
+  const [errors, setErrors] = useState({});
 
   const convertToBase64 = (e) => {
     console.log(e);
@@ -36,37 +37,69 @@ export default function CreateRecipe() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const newErrors = {};
+
     if (!recipe.image) {
-      alert("Please upload an image!");
-      return;
+      newErrors.image = "Please upload an image.";
     }
 
     if (recipe.name.trim().length < 5) {
-      alert("Recipe name must be at least 5 characters long.");
-      return;
+      newErrors.name = "Recipe name must be at least 5 characters.";
     }
 
     if (recipe.description.trim().length < 10) {
-      alert("Description must be at least 10 characters long.");
-      return;
+      newErrors.description = "Description must be at least 10 characters.";
+    }
+
+    if (
+      !recipe.cookingDuration ||
+      recipe.cookingDuration.hours === "" ||
+      recipe.cookingDuration.minutes === ""
+    ) {
+      newErrors.cookingDuration = "Enter cooking time (hours and minutes).";
+    }
+
+    if (
+      !recipe.cleaningTime ||
+      recipe.cleaningTime.hours === "" ||
+      recipe.cleaningTime.minutes === ""
+    ) {
+      newErrors.cleaningTime = "Enter cleaning time (hours and minutes).";
     }
 
     const validIngredients = recipe.ingredients.filter(
       (i) => i.name.trim() && i.quantity.trim()
     );
     if (validIngredients.length === 0) {
-      alert("Please add at least one ingredient with name and quantity.");
-      return;
+      newErrors.ingredients =
+        "Add at least one ingredient with name and quantity.";
     }
 
     if (
       recipe.steps.length === 0 ||
       recipe.steps.some((s) => s.trim().length < 5)
     ) {
-      alert("Please add at least one step with 5 or more characters.");
+      newErrors.steps = "Add at least one step with 5+ characters.";
+    }
+
+    if (!recipe.courseType || recipe.courseType.length === 0) {
+      newErrors.courseType = "Select at least one course type.";
+    }
+
+    if (!recipe.dietType || recipe.dietType.length === 0) {
+      newErrors.dietType = "Select at least one diet type.";
+    }
+
+    if (!recipe.cuisineType) {
+      newErrors.cuisineType = "Select a cuisine type.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
+    setErrors({});
     recipe.handleSubmit();
     clearFileInput();
   };
@@ -83,6 +116,7 @@ export default function CreateRecipe() {
         dietOptions={dietOptions}
         courseOptions={courseOptions}
         fileInputRef={fileInputRef}
+        errors={errors}
       />
 
       <Footer shortTxt="© 2025 Nemte. All rights reserved" />
