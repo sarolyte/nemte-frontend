@@ -13,10 +13,6 @@
   transition: transform 0.2s ease;
 }
 
-.thumbnail:hover {
-  transform: scale(1.05);
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -34,4 +30,12 @@
   max-width: 90%;
   max-height: 90%;
   border-radius: 12px;
+}
+
+@media screen and (min-width: 694px) {
+  .imageGallery {
+    max-width: 2100px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+  }
 }

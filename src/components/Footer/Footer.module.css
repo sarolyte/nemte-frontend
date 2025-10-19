@@ -17,3 +17,16 @@
     width: 150px;
     margin-bottom: 30px;
 }
+
+.socialTxtBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .socialTxtBlock  {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

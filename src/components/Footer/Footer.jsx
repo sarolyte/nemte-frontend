@@ -6,8 +6,10 @@ export default function Footer({shortTxt}) {
     return (
         <div className={styles.sectionWrapper} >
             <img className={styles.logo} src={NemteLogo} alt="" />
-            <SocialMediaBlock/>
-            <p> {shortTxt} </p>
+            <div className={styles.socialTxtBlock} >
+                <SocialMediaBlock/>
+                <p> {shortTxt} </p>
+            </div>
         </div>
     )
 }

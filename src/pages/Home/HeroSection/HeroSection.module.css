@@ -45,3 +45,9 @@
 .heroWrapper a:hover {
     color: rgb(255, 255, 255);
 }
+
+@media screen and (min-width: 768px) {
+  .heroWrapper  {
+    height: calc(100svh - 115px);
+  }
+}

@@ -1,5 +1,5 @@
 .wrapper {
-  padding: 30px 30px;
+  padding: 30px 30px 0;
 }
 
 .btnsBlock {
@@ -7,7 +7,7 @@
   justify-content: space-between;
   gap: 50px;
   margin: 10px 0 0 0;
-  background-color: #F5EBDD;
+  background-color: #f5ebdd;
   padding: 50px 30px;
 }
 
@@ -132,4 +132,29 @@
   list-style-type: decimal;
   margin-bottom: 10px;
   line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+  .pageWrapper {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .btnsBlock {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .btnsBlock button {
+    width: 390px;
+  }
+
+  .imgBlock {
+    max-width: 800px;
+    height: 450px;
+    margin-bottom: 20px;
+  }
 }

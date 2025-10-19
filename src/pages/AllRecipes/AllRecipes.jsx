@@ -74,8 +74,9 @@ export default function AllRecipes() {
   ]);
 
   return (
-    <>
-      <div>
+    <div className={styles.pageWrapper} >
+      <div className={styles.contentWrapper} >
+              <div className={styles.pageWrapper}>
         <div className={styles.filtersWrapper}>
           <input
             type="text"
@@ -125,8 +126,8 @@ export default function AllRecipes() {
             className={styles.select}
           />
         </div>
-      </div>
-      <div className={styles.sectionWrapper}>
+
+              <div className={styles.sectionWrapper}>
         <h2>All recipes</h2>
         <div className={styles.containerWrapper}>
           <div className={styles.container} id="recipes">
@@ -142,10 +143,12 @@ export default function AllRecipes() {
           </div>
         </div>
       </div>
+      </div>
 
-      {filteredData.length > 0 && (
+      </div>
+            {filteredData.length > 0 && (
         <Footer shortTxt="© 2025 Nemte. All rights reserved" />
       )}
-    </>
+    </div>
   );
 }

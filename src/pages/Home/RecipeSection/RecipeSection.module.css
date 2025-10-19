@@ -22,3 +22,23 @@
   flex-wrap: nowrap;
   gap: 20px;
 }
+
+.actionBtns {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 16px;
+}
+
+.actionBtns button {
+  background-color: transparent;
+  color: #151515;
+  font-size: 20pt;
+}
+
+@media screen and (min-width: 992px) {
+  .containerWrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+}
