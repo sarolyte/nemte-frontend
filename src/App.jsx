@@ -26,7 +26,6 @@ function App() {
         <Route path="/edit/:id" element={<EditRecipe />} />
         <Route path="/all-recipes" element={<AllRecipes />} />
       </Routes>
-      <Footer shortTxt='© 2025 Nemte. All right reserved' />
     </>
   )
 }

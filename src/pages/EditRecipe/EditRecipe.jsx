@@ -1,3 +1,4 @@
+import styles from "./EditRecipe.module.css";
 import { useEffect, useState, useRef } from "react";
 import useUpdateRecipe from "../../hooks/useUpdateRecipe.js";
 import RecipeForm from "../../components/RecipeForm/RecipeForm.jsx";
@@ -9,6 +10,7 @@ import {
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useFetchDataById from "../../hooks/useFetchDataById.js";
+import Footer from "../../components/Footer/Footer.jsx";
 
 export default function EditRecipe() {
   const { id } = useParams();
@@ -139,16 +141,20 @@ export default function EditRecipe() {
   if (!recipe) return <p>Loading recipe...</p>;
 
   return (
-    <RecipeForm
-      recipe={recipe}
-      onSubmit={handleSubmit}
-      convertToBase64={convertToBase64}
-      fileInputRef={fileInputRef}
-      title="Edit Recipe"
-      submitLabel="Update Recipe"
-      cuisineOptions={cuisineOptions}
-      dietOptions={dietOptions}
-      courseOptions={courseOptions}
-    />
+    <div className={styles.pageWrapper}>
+      <RecipeForm
+        recipe={recipe}
+        onSubmit={handleSubmit}
+        convertToBase64={convertToBase64}
+        fileInputRef={fileInputRef}
+        title="Edit Recipe"
+        submitLabel="Update Recipe"
+        cuisineOptions={cuisineOptions}
+        dietOptions={dietOptions}
+        courseOptions={courseOptions}
+      />
+
+      <Footer shortTxt="© 2025 Nemte. All rights reserved" />
+    </div>
   );
 }

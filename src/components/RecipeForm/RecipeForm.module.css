@@ -1,7 +1,6 @@
 .recipeForm {
   max-width: 700px;
-  margin: 5px auto;
-  padding: 5px 30px;
+  padding: 5px 30px 30px;
   background-color: #fdfdfd;
 }
 
@@ -47,18 +46,6 @@ select {
   padding: 0 10px;
   color: #585858;
 }
-
-/* .submitBtn {
-  margin:20px 0 30px 0;
-  padding: 12px 24px;
-  background-color: #F2A97E;
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-} */
 
 .submitBtn:hover {
   background-color: #df9063;
@@ -112,4 +99,11 @@ select {
   border-radius: 6px;
   background-color: #f9f9f9;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .recipeForm {
+    margin: 5px auto;
+    width: 1000px;
+  }
 }

@@ -1,3 +1,5 @@
+import styles from './CreateRecipe.module.css'
+import Footer from "../../components/Footer/Footer.jsx";
 import RecipeForm from "../../components/RecipeForm/RecipeForm.jsx";
 import {
   courseOptions,
@@ -70,7 +72,7 @@ export default function CreateRecipe() {
   };
 
   return (
-    <>
+    <div className={styles.pageWrapper}>
       <RecipeForm
         recipe={recipe}
         onSubmit={handleSubmit}
@@ -82,6 +84,8 @@ export default function CreateRecipe() {
         courseOptions={courseOptions}
         fileInputRef={fileInputRef}
       />
-    </>
+
+      <Footer shortTxt="© 2025 Nemte. All rights reserved" />
+    </div>
   );
 }

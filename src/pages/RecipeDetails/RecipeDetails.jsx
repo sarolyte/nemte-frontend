@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useDeleteRecipe from "../../hooks/useDeleteRecipe.js";
 import Modal from "../../components/Modal/Modal.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 
 export default function RecipeDetails() {
   const { id } = useParams();
@@ -136,6 +137,9 @@ export default function RecipeDetails() {
           handleDelete();
         }}
       />
+      {data && Object.keys(data).length > 0 && !loading && !error && (
+        <Footer shortTxt="© 2025 Nemte. All rights reserved" />
+      )}
     </>
   );
 }

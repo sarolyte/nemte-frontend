@@ -1,10 +1,11 @@
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import Footer from "../../components/Footer/Footer.jsx";
+import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import {
   courseOptions,
   cuisineOptions,
   dietOptions,
-} from "../../components/RecipeForm/RecipeFormOptions";
-import useFetchData from "../../hooks/useFetchData";
+} from "../../components/RecipeForm/RecipeFormOptions.jsx";
+import useFetchData from "../../hooks/useFetchData.js";
 import styles from "./AllRecipes.module.css";
 import { useState, useEffect, useMemo } from "react";
 import Select from "react-select";
@@ -27,6 +28,7 @@ export default function AllRecipes() {
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
+  //filter and sort
   const filteredData = useMemo(() => {
     let filtered = [...data];
 
@@ -74,7 +76,7 @@ export default function AllRecipes() {
   return (
     <>
       <div>
-        <div className={styles.filters}>
+        <div className={styles.filtersWrapper}>
           <input
             type="text"
             placeholder="Search by name..."
@@ -110,14 +112,18 @@ export default function AllRecipes() {
             className={styles.select}
           />
 
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-            className={styles.sortSelect}
-          >
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
-          </select>
+          <Select
+            options={[
+              { value: "newest", label: "Newest first" },
+              { value: "oldest", label: "Oldest first" },
+            ]}
+            value={{
+              value: sortOrder,
+              label: sortOrder === "newest" ? "Newest first" : "Oldest first",
+            }}
+            onChange={(selected) => setSortOrder(selected.value)}
+            className={styles.select}
+          />
         </div>
       </div>
       <div className={styles.sectionWrapper}>
@@ -136,6 +142,10 @@ export default function AllRecipes() {
           </div>
         </div>
       </div>
+
+      {filteredData.length > 0 && (
+        <Footer shortTxt="© 2025 Nemte. All rights reserved" />
+      )}
     </>
   );
 }

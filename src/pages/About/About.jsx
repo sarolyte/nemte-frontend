@@ -13,6 +13,7 @@ import VeganCurry from "../../assets/Vegan_Sweet_Potato_Curry.png";
 import FreshSalad from "../../assets/Fresh_Vegetable_Salad.png";
 import LazyCake from "../../assets/Lazy_Cake_with_Coconut_Cream.png";
 import BananaSmoothie from "../../assets/Banana_Smoothie.png";
+import Footer from "../../components/Footer/Footer.jsx";
 
 
 export default function About() {
@@ -50,6 +51,8 @@ export default function About() {
           { src: BananaSmoothie, alt: "Banana Smoothie" },
         ]}
       />
+
+      <Footer shortTxt="© 2025 Nemte. All rights reserved" />
     </div>
   );
 }
