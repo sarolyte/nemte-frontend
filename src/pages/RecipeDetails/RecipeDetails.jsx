@@ -43,8 +43,81 @@ export default function RecipeDetails() {
     : "";
 
   return (
-    <div>
-      <div>
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.datesBlock}>
+          <p>Created: {createdDate}</p>
+          {data.updatedAt && <p>Updated: {updatedDate}</p>}
+        </div>
+
+        <div className={styles.imgBlock}>
+          <img src={data.image} alt={data.name} />
+        </div>
+
+        <div>
+          <div className={styles.tags}>
+            {Array.isArray(data.courseType) && data.courseType.length > 0 && (
+              <div className={styles.courseTagGroup}>
+                {data.courseType.map((type, index) => (
+                  <p key={index} className={styles.courseTag}>
+                    {type}
+                  </p>
+                ))}
+              </div>
+            )}
+            {Array.isArray(data.dietType) && data.dietType.length > 0 && (
+              <div className={styles.dietTagGroup}>
+                {data.dietType.map((type, index) => (
+                  <p key={index} className={styles.dietTag}>
+                    {type}
+                  </p>
+                ))}
+              </div>
+            )}
+            {data.cuisineType && data.cuisineType.length > 0 && (
+              <p className={styles.cuisineTag}>{data.cuisineType}</p>
+            )}
+          </div>
+
+          <h1>{data.name}</h1>
+          <div className={styles.infoBlock}>
+            <p>
+              <span>Cooking Time:</span> {data.cookingDuration.quantity}
+            </p>
+
+            <p>
+              <span>Cleaning Time:</span> {data.cleaningTime.quantity}
+            </p>
+
+            <p>
+              <span>Portions:</span> {data.portions}
+            </p>
+          </div>
+
+          <p className={styles.descriptionBlock}>{data.description}</p>
+        </div>
+
+        <div className={styles.ingredientsBlock}>
+          <h2>Ingredients</h2>
+          <ul className={styles.ingredientsList}>
+            {data.ingredients.map((item, index) => (
+              <li key={index}>
+                {item.quantity} {item.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.stepsBlock}>
+          <h2>Steps</h2>
+          <ol>
+            {data.steps.map((step, index) => (
+              <li key={index}>{step}</li>
+            ))}
+          </ol>
+        </div>
+      </div>
+      <div className={styles.btnsBlock}>
         <Link to={`/edit/${id}`}>
           <button>Edit</button>
         </Link>
@@ -52,64 +125,6 @@ export default function RecipeDetails() {
         <button onClick={openModal}>Delete</button>
       </div>
 
-      <div>
-        <p>Created: {createdDate}</p>
-        {data.updatedAt && <p>Updated: {updatedDate}</p>}
-        <img src={data.image} alt={data.name} style={{ width: "400px" }} />
-
-        <div className={styles.tags}>
-          {data.courseType && data.courseType.length > 0 && (
-            <p>
-              <strong>Course Type:</strong> {data.courseType}
-            </p>
-          )}
-          {data.dietType && data.dietType.length > 0 && (
-            <p>
-              <strong>Diet Type:</strong> {data.dietType}
-            </p>
-          )}
-          {data.cuisineType && data.cuisineType.length > 0 && (
-            <p>
-              <strong>Cuisine Type:</strong> {data.cuisineType}
-            </p>
-          )}
-        </div>
-
-        <h1>{data.name}</h1>
-        <p>
-          <strong>Cooking Time:</strong> {data.cookingDuration.quantity}
-        </p>
-
-        <p>
-          <strong>Cleaning Time:</strong> {data.cleaningTime.quantity}
-        </p>
-
-        <p>
-          <strong>Portions:</strong> {data.portions}
-        </p>
-
-        <p>{data.description}</p>
-      </div>
-
-      <div className={styles.ingredientsBlock}>
-        <h2>Ingredients</h2>
-        <ul className={styles.ingredientsList}>
-          {data.ingredients.map((item, index) => (
-            <li key={index}>
-              {item.quantity} {item.name}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div>
-        <h2>Steps</h2>
-        <ol>
-          {data.steps.map((step, index) => (
-            <li key={index}>{step}</li>
-          ))}
-        </ol>
-      </div>
       <Modal
         isOpen={modalOpen}
         message="Are you sure you want to delete this recipe?"
@@ -121,6 +136,6 @@ export default function RecipeDetails() {
           handleDelete();
         }}
       />
-    </div>
+    </>
   );
 }

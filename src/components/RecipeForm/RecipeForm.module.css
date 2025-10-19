@@ -48,7 +48,7 @@ select {
   color: #585858;
 }
 
-.submitBtn {
+/* .submitBtn {
   margin:20px 0 30px 0;
   padding: 12px 24px;
   background-color: #F2A97E;
@@ -58,7 +58,7 @@ select {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-}
+} */
 
 .submitBtn:hover {
   background-color: #df9063;
@@ -74,6 +74,7 @@ select {
   margin-top: 10px;
   padding: 8px 15px;
   background-color: #C7D3B8;
+  color: #151515;
   border: none;
   border-radius: 4px;
   cursor: pointer;
