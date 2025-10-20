@@ -37,6 +37,28 @@ export default function useNewRecipe() {
   };
 
   const handleSubmit = () => {
+    console.log("Submitting:", {
+      name,
+      image,
+      description,
+      cookingDuration: {
+        hours: Number(cookingDuration.hours),
+        minutes: Number(cookingDuration.minutes),
+        quantity: formatDuration(cookingDuration),
+      },
+      cleaningTime: {
+        hours: Number(cleaningTime.hours),
+        minutes: Number(cleaningTime.minutes),
+        quantity: formatDuration(cleaningTime),
+      },
+      ingredients,
+      steps,
+      portions: Number(portions),
+      courseType: courseType.map((type) => type.toLowerCase()),
+      dietType: dietType.map((type) => type.toLowerCase()),
+      cuisineType: cuisineType.toLowerCase(),
+    });
+
     fetch("http://localhost:3000/recipe", {
       method: "POST",
       headers: {
@@ -47,30 +69,32 @@ export default function useNewRecipe() {
         image,
         description,
         cookingDuration: {
-          hours: cookingDuration.hours,
-          minutes: cookingDuration.minutes,
+          hours: Number(cookingDuration.hours),
+          minutes: Number(cookingDuration.minutes),
           quantity: formatDuration(cookingDuration),
         },
         cleaningTime: {
-          hours: cleaningTime.hours,
-          minutes: cleaningTime.minutes,
+          hours: Number(cleaningTime.hours),
+          minutes: Number(cleaningTime.minutes),
           quantity: formatDuration(cleaningTime),
         },
         ingredients,
         steps,
-        portions,
-        courseType,
-        dietType,
-        cuisineType,
+        portions: Number(portions),
+        courseType: courseType.map((type) => type.toLowerCase()),
+        dietType: dietType.map((type) => type.toLowerCase()),
+        cuisineType: cuisineType.toLowerCase(),
       }),
     })
-      .then((response) => {
-        if (!response.ok) throw new Error("Failed to submit");
-        return response.json();
-      })
-      .then((result) => {
+      .then(async (response) => {
+    const result = await response.json();
+        if (!response.ok) {
+          console.error("Server response:", result);
+          throw new Error("Failed to submit");
+        }
         console.log(result);
         resetForm();
+        alert("Recipe successfully posted!");
       })
       .catch((error) => console.error('Submit error:', error));
   };

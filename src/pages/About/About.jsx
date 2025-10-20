@@ -18,7 +18,7 @@ import Footer from "../../components/Footer/Footer.jsx";
 
 export default function About() {
   return (
-    <div>
+    <div className={styles.pageWrapper}>
       <div className={styles.textSection} >
         <TextBlock
             className={styles.textBlock}

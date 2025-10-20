@@ -1,3 +1,14 @@
 .textSection {
     padding: 30px 30px;
 }
+
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.textSection,
+.GridGallery {
+  flex: 1;
+}

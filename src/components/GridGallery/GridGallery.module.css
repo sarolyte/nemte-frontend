@@ -35,7 +35,12 @@
 @media screen and (min-width: 694px) {
   .imageGallery {
     max-width: 2100px;
-    display: grid;
     grid-template-columns: repeat(9, 1fr);
+  }
+}
+
+@media screen and (min-width: 2095px) {
+  .imageGallery {
+    max-width: 3200px;
   }
 }
